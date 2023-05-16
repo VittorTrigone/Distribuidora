@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-8 m-auto">
+        <form [formGroup]="formGroupCliente">
+            <div class="mb-3">
+                <div class="display-6 text-center">
+                    Cadastro clientes
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nome">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descrição:</label>
+                <input type="text" formControlName="description" class="form-control" id="description" placeholder="Descrição">
+            </div>
+            <div class="mb-3">
+                <label for="supplier" class="form-label">Fornecedor:</label>
+                <input type="text" formControlName="supplier" class="form-control" id="supplier" placeholder="Fornecedor">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Preço:</label>
+                <input type="text" formControlName="price" class="form-control" id="price" placeholder="Preço">
+            </div>
+            <div class="mb-3">
+                <label for="amont" class="form-label">Quantidade:</label>
+                <input type="text" formControlName="amont" class="form-control" id="amont" placeholder="Quantidade">
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+                <button class="btn btn-primary" (click)="save()">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Fornecedor</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes">
+            <td scope="row">{{cliente.id}}</td>
+            <td>{{cliente.name}}</td>
+            <td>{{cliente.description}}</td>
+            <td>{{cliente.supplier}}</td>
+            <td>{{cliente.price}}</td>
+            <td>{{cliente.amont}}</td>
+            <td>
+                <button class="btn btn-primary me-1" (click)="edit(cliente)">Editar</button>
+                <button class="btn btn-danger" (click)="delete(cliente)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

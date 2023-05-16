@@ -1,0 +1,20 @@
+{
+  "clientes": [
+    {
+      "id": 2,
+      "name": "Mouse",
+      "description": "Melhor mouse GAMER do mundo!",
+      "supplier": "Terabyte",
+      "price": "R$389,50",
+      "amont": "23"
+    },
+    {
+      "id": 3,
+      "name": "Monitor",
+      "description": "Monitor 800Hz, INCRIVER!!",
+      "supplier": "Magazine Luiza",
+      "price": "R$1.328,90",
+      "amont": "16"
+    }
+  ]
+}
