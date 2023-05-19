@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start-server1": "json-server --watch cliente.json --port 3001",
+    "start-server2": "json-server --watch fornecedor.json --port 3002",
+    "start": "npm-run-all -p start-server1 start-server2"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +39,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "npm-run-all": "^4.1.5",
     "typescript": "~4.9.4"
   }
 }

@@ -1,20 +1,28 @@
 {
   "clientes": [
     {
+      "id": 1,
+      "name": "wqdwqd",
+      "description": "wqdwqdqw",
+      "supplier": "dqwdwqd",
+      "price": "wqdwqd",
+      "amont": "qwdwqdwq"
+    },
+    {
       "id": 2,
-      "name": "Mouse",
-      "description": "Melhor mouse GAMER do mundo!",
-      "supplier": "Terabyte",
-      "price": "R$389,50",
-      "amont": "23"
+      "name": "wqd",
+      "description": "wqd",
+      "supplier": "wqd",
+      "price": "qwd",
+      "amont": "wqd"
     },
     {
       "id": 3,
-      "name": "Monitor",
-      "description": "Monitor 800Hz, INCRIVER!!",
-      "supplier": "Magazine Luiza",
-      "price": "R$1.328,90",
-      "amont": "16"
+      "name": "wqdwqd",
+      "description": "wqdwqd",
+      "supplier": "qwdwqdwq",
+      "price": "dqwdwqd",
+      "amont": "wqd"
     }
   ]
 }

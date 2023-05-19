@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
 
@@ -15,7 +16,7 @@ export class ClientesComponent {
   formGroupCliente: FormGroup;
 
   constructor(private clienteService: ClienteService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private modalService: NgbModal) {
     this.formGroupCliente = formBuilder.group({
       id: [''],
       name: [''],
@@ -72,5 +73,9 @@ export class ClientesComponent {
     this.clienteService.delete(cliente).subscribe({
       next: () => this.loadClientes()
     })
+  }
+
+  open(content: any) {
+    this.modalService.open(content);
   }
 }

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClienteService {
 
-  url = "http://localhost:3000/clientes";
+  url = "http://localhost:3001/clientes";
   constructor(private http: HttpClient) { }
 
   getCliente(): Observable<Cliente[]> {
