@@ -1,28 +1,3 @@
 {
-  "clientes": [
-    {
-      "id": 1,
-      "name": "wqdwqd",
-      "description": "wqdwqdqw",
-      "supplier": "dqwdwqd",
-      "price": "wqdwqd",
-      "amont": "qwdwqdwq"
-    },
-    {
-      "id": 2,
-      "name": "wqd",
-      "description": "wqd",
-      "supplier": "wqd",
-      "price": "qwd",
-      "amont": "wqd"
-    },
-    {
-      "id": 3,
-      "name": "wqdwqd",
-      "description": "wqdwqd",
-      "supplier": "qwdwqdwq",
-      "price": "dqwdwqd",
-      "amont": "wqd"
-    }
-  ]
+  "clientes": []
 }

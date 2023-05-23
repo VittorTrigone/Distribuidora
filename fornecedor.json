@@ -2,11 +2,23 @@
   "fornecedores": [
     {
       "id": 1,
-      "name": "wdqwd",
-      "description": "wqdwqd",
-      "supplier": "wqdqw",
-      "price": "dwqdwqd",
-      "amont": "wqdqwd"
+      "name": "wqdqwd",
+      "email": "wqdwq",
+      "cnpj": 234234,
+      "telefone": 32432423,
+      "endereco": "wefewfe",
+      "estado": "Rio de Janeiro",
+      "cidade": "wfewfwef"
+    },
+    {
+      "id": 2,
+      "name": "qwd",
+      "email": "wdwadaw",
+      "cnpj": 324234,
+      "telefone": 23432,
+      "endereco": "wefwefew",
+      "estado": "Paraíba",
+      "cidade": "fewfw"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Fornecedor } from '../fornecedor';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FornecedorService } from '../fornecedor.service';
 
@@ -12,18 +12,21 @@ import { FornecedorService } from '../fornecedor.service';
 export class FornecedoresComponent {
 
   fornecedores: Fornecedor[] = [];
-  isEditing : boolean = false;
+  isEditing: boolean = false;
   formGroupFornecedor: FormGroup;
+  submitted: boolean = false;
 
   constructor(private fornecedorService: FornecedorService,
     private formBuilder: FormBuilder, private modalService: NgbModal) {
     this.formGroupFornecedor = formBuilder.group({
       id: [''],
-      name: [''],
-      description: [''],
-      supplier: [''],
-      price: [''],
-      amont: ['']
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', Validators.required, Validators.email],
+      cnpj: ['', [Validators.pattern(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/)]],
+      telefone: ['', [Validators.pattern(/^(\(\d{2}\)\s\d{4,5}-\d{4}|\d{2}\s\d{4,5}-\d{4})$/)]],
+      endereco: ['', Validators.required],
+      estado: ['', [Validators.required]],
+      cidade: ['', [Validators.required]]
     })
   }
 
@@ -40,36 +43,45 @@ export class FornecedoresComponent {
   }
 
   save() {
-    if(this.isEditing)
-    {
-      this.fornecedorService.update(this.formGroupFornecedor.value).subscribe(
-        {
-          next: () => {
-            this.loadFornecedores();
-            this.formGroupFornecedor.reset();
-            this.isEditing = false;
+    this.submitted = true;
+
+    if (this.formGroupFornecedor.valid) {
+      if (this.isEditing) {
+        this.fornecedorService.update(this.formGroupFornecedor.value).subscribe(
+          {
+            next: () => {
+              this.loadFornecedores();
+              this.modalService.dismissAll();
+              this.formGroupFornecedor.reset();
+              this.formGroupFornecedor.get('estado')?.setValue('');
+              this.isEditing = false;
+              this.submitted = false;
+            }
           }
-        }
-      )
-    }
-    else{
-      this.fornecedorService.save(this.formGroupFornecedor.value).subscribe(
-        {
-          next: data => {
-            this.fornecedores.push(data);
-            this.formGroupFornecedor.reset();
+        )
+      }
+      else {
+        this.fornecedorService.save(this.formGroupFornecedor.value).subscribe(
+          {
+            next: data => {
+              this.fornecedores.push(data);
+              this.modalService.dismissAll();
+              this.formGroupFornecedor.reset();
+              this.formGroupFornecedor.get('estado')?.setValue('');
+              this.submitted = false;
+            }
           }
-        }
-      )
+        )
+      }
     }
   }
 
-  edit(fornecedor: Fornecedor){
+  edit(fornecedor: Fornecedor) {
     this.formGroupFornecedor.setValue(fornecedor);
     this.isEditing = true;
   }
 
-  delete(fornecedor: Fornecedor){
+  delete(fornecedor: Fornecedor) {
     this.fornecedorService.delete(fornecedor).subscribe({
       next: () => this.loadFornecedores()
     })
@@ -78,4 +90,34 @@ export class FornecedoresComponent {
   open(content: any) {
     this.modalService.open(content);
   }
+
+  get name(): any {
+    return this.formGroupFornecedor.get("name")
+  }
+  get email(): any {
+    return this.formGroupFornecedor.get("email")
+  }
+  get cnpj(): any {
+    return this.formGroupFornecedor.get("cnpj")
+  }
+  get telefone(): any {
+    return this.formGroupFornecedor.get("telefone")
+  }
+  get endereco(): any {
+    return this.formGroupFornecedor.get("endereco")
+  }
+  get estado(): any {
+    return this.formGroupFornecedor.get("estado")
+  }
+  get cidade(): any {
+    return this.formGroupFornecedor.get("cidade")
+  }
+
+  fecharModal() {
+    this.modalService.dismissAll();
+    this.formGroupFornecedor.reset();
+    this.formGroupFornecedor.get('estado')?.setValue(''); // Define o valor do campo "estado" como vazio
+    this.submitted = false;
+  }
+
 }

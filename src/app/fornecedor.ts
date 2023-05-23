@@ -1,9 +1,10 @@
 export interface Fornecedor {
     id : number;
     name : string;
-    description : string;
-    supplier : string;
-    price: string;
-    amont: number;
-
+    email: string;
+    cnpj: number;
+    telefone: string;
+    endereco : string;
+    estado : string;
+    cidade: string;
 }
